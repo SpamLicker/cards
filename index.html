@@ -3,16 +3,21 @@
 <head>
   <meta meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name=”apple-mobile-web-app-capable” content=”yes “>
-  <style type="text/css">
   
+  <style type="text/css">
     body {
       background-color: black;
+    }
+
+    .dock-item {
+      z-index: 0;
     }
   
     #myVideo {
         width: 100% !important;
         object-fit: fill;
         flex: 1 0 0;
+        z-index: -1;
     }
   </style>
   
