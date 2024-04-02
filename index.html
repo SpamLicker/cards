@@ -27,6 +27,12 @@
   
   <script type="text/javascript">
 
+    function eventHandler(e){
+      if(e.touches && e.touches.length > 1) {
+        e.preventDefault();
+      }
+    }
+
     //document.addEventListener('contextmenu', event => event.preventDefault());
   
     // listen for long-press event
