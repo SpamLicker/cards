@@ -6,6 +6,8 @@
 
   "display": "fullscreen",
 
+  "start_url": "/",
+  
   "icons": [
   {
     "src": "hand.png",
