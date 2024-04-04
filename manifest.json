@@ -4,18 +4,8 @@
 
   "short_name": "Touch", 
 
-  "start_url": "https://spamlicker.github.io/touch/", 
+  "start_url": "/?fullscreen=true", 
 
-  "display": "standalone", 
-
-  "icons": [{ 
-
-    "src": "logo.png", 
-
-    "sizes": "512x512", 
-
-    "type": "image/png" 
-
-  }] 
+  "display": "fullscreen",
 
 }
