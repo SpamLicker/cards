@@ -6,6 +6,12 @@
 
   "start_url": "/?fullscreen=true", 
 
-  "display": "fullscreen"
+  "display": "fullscreen",
+
+  "icons": [
+  {
+    "src": "hand.png",
+    "sizes": "512x512"
+  }]
 
 }
