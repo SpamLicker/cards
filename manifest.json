@@ -4,8 +4,6 @@
 
   "short_name": "Touch", 
 
-  "start_url": "/?fullscreen=true", 
-
   "display": "fullscreen",
 
   "icons": [
