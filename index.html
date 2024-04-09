@@ -9,7 +9,7 @@
   <style type="text/css">
     
     body {
-      cursor: none;
+/*      cursor: none;*/
       touch-action: none;
       background-color: black;
     }
@@ -24,6 +24,49 @@
       flex: 1 0 0;
       z-index: -1;
     }
+
+        #card1Video {
+      width: 100% !important;
+      object-fit: fill;
+      flex: 1 0 0;
+      z-index: -3;
+    }
+
+    .hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+@keyframes colorize {
+    0% {
+        background: rgba(255, 0, 0, 0.5);
+    }
+    25% {
+        background: rgba(0, 255, 0, 0.5);
+    }
+    50% {
+        background: rgba(0, 0, 255, 0.5);
+    }
+    75% {
+        background: rgba(0, 115, 115, 0.5);
+    }
+    100% {
+        background: rgba(125, 0, 115, 0.5);
+    }
+}
+
+.videohue {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -2;
+}
+
+
 
     video {
   position: absolute;
@@ -133,10 +176,15 @@
   </div>
 
   <div class="dock-item" data-long-press-delay="3000">
+
     <video id="myVideo" autoplay loop onloadstart="this.volume=0" controlsList="nodownload" oncontextmenu="return false;">
       <source id="mp4_src" src="./videos/train_window.mp4" type="video/mp4">
-      Your browser does not support HTML5 video.
     </video>
+
+<div class="videohue" id="videohue"></div>
+                    <video id="card1Video" autoplay loop onloadstart="this.volume=0" controlsList="nodownload" oncontextmenu="return false;">
+      <source id="mp4_src" src="./videos/train_window_clouds.mp4" type="video/mp4">
+            </video>
   </div>
 
 
@@ -177,7 +225,11 @@
           c3.style.display = "none";
           c4.style.display = "none";
         }
-        document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+      //  document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+       // document.getElementById('myVideo').style.display = "none";
+       // document.getElementById('myVideo').classList.add("videohue");
+        document.getElementById('myVideo').classList.add("hidden");
+            document.getElementById('videohue').style.background="rgba(39, 74, 70, 0.5)";
       }, 1000);
     }
 
@@ -205,7 +257,8 @@
           c3.style.display = "none";
           c4.style.display = "none";
         }
-        document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+        document.getElementById('myVideo').classList.add("hidden");
+        document.getElementById('videohue').style.background="rgba(90, 33, 26, 0.5)";
       }, 1000);
     }
 
@@ -233,7 +286,8 @@
           c2.style.display = "none";
           c4.style.display = "none";
         }
-        document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+        document.getElementById('myVideo').classList.add("hidden");
+        document.getElementById('videohue').style.background="rgba(104, 51, 75, 0.5)";
       }, 1000);
     }
 
@@ -261,7 +315,8 @@
           c2.style.display = "none";
           c3.style.display = "none";
         }
-        document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+        document.getElementById('myVideo').classList.add("hidden");
+        document.getElementById('videohue').style.background="rgba(25, 49, 69, 0.5)";
       }, 1000);
     }
 
