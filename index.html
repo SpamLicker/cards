@@ -4,10 +4,12 @@
   <meta meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name=”apple-mobile-web-app-capable” content=”yes“>
   <link rel="manifest" href="manifest.json">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   
   <style type="text/css">
     
     body {
+      cursor: none;
       touch-action: none;
       background-color: black;
     }
@@ -22,6 +24,77 @@
       flex: 1 0 0;
       z-index: -1;
     }
+
+    video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.overlay {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+    .container {
+  display: block;
+  width: 100%;
+}
+
+.card {
+/*  border: 1px solid black;*/
+  float: left;
+  margin: 1px;
+  padding: 10px 3px;
+  /*setting width for each and every card element as well as -10px for removing the margin width for 5 elements*/
+  width: calc( 100% / 5 - 10px);
+}
+
+.card img{
+  float: right;
+}
+
+
+/*first element*/
+
+.container .card:first-child {
+  margin-left: 0;
+}
+
+
+/*last element of the first row*/
+
+.container .card:nth-child(5n) {
+  margin-right: 0;
+}
+
+
+/*first-element of the 2nd row*/
+
+.container .card:nth-child(5n+1) {
+  margin-left: 0;
+}
+
+
+/*last element*/
+
+.container .card:last-child {
+  margin-right: 0;
+}
   
   </style>
   
@@ -29,26 +102,263 @@
 
     document.addEventListener('contextmenu', event => event.preventDefault());
   
-    // listen for long-press event
-    document.addEventListener('long-press', function(e) {
-     e.target.setAttribute('data-editing', 'true');
-       myVideo.play();
-    });
+    // // listen for long-press event
+    // document.getElementById('card1').addEventListener('long-press', function(e) {
+    //  e.target.setAttribute('data-editing', 'true');
+    //    myVideo.play();
+    // });
   
-    !function(t,e){"use strict";function n(){this.dispatchEvent(new CustomEvent("long-press",{bubbles:!0,cancelable:!0})),clearTimeout(o),console&&console.log&&console.log("long-press fired on "+this.outerHTML)}var o=null,u="ontouchstart"in t||navigator.MaxTouchPoints>0||navigator.msMaxTouchPoints>0,s=u?"touchstart":"mousedown",i=u?"touchcancel":"mouseout",a=u?"touchend":"mouseup",c=u?"touchmove":"mousemove";"initCustomEvent"in e.createEvent("CustomEvent")&&(t.CustomEvent=function(t,n){n=n||{bubbles:!1,cancelable:!1,detail:void 0};var o=e.createEvent("CustomEvent");return o.initCustomEvent(t,n.bubbles,n.cancelable,n.detail),o},t.CustomEvent.prototype=t.Event.prototype),e.addEventListener(s,function(t){var e=t.target,u=parseInt(e.getAttribute("data-long-press-delay")||"3000",10);o=setTimeout(n.bind(e),u)}),e.addEventListener(a,function(t){clearTimeout(o)}),e.addEventListener(i,function(t){clearTimeout(o)}),e.addEventListener(c,function(t){clearTimeout(o)})}(this,document);
+    // !function(t,e){"use strict";function n(){this.dispatchEvent(new CustomEvent("long-press",{bubbles:!0,cancelable:!0})),clearTimeout(o),console&&console.log&&console.log("long-press fired on "+this.outerHTML)}var o=null,u="ontouchstart"in t||navigator.MaxTouchPoints>0||navigator.msMaxTouchPoints>0,s=u?"touchstart":"mousedown",i=u?"touchcancel":"mouseout",a=u?"touchend":"mouseup",c=u?"touchmove":"mousemove";"initCustomEvent"in e.createEvent("CustomEvent")&&(t.CustomEvent=function(t,n){n=n||{bubbles:!1,cancelable:!1,detail:void 0};var o=e.createEvent("CustomEvent");return o.initCustomEvent(t,n.bubbles,n.cancelable,n.detail),o},t.CustomEvent.prototype=t.Event.prototype),e.addEventListener(s,function(t){var e=t.target,u=parseInt(e.getAttribute("data-long-press-delay")||"3000",10);o=setTimeout(n.bind(e),u)}),e.addEventListener(a,function(t){clearTimeout(o)}),e.addEventListener(i,function(t){clearTimeout(o)}),e.addEventListener(c,function(t){clearTimeout(o)})}(this,document);
 
   </script>
 </head>
 <body>
 
-<div class="dock-item" data-long-press-delay="3000">
-  <video id="myVideo" autoplay controlsList="nodownload" oncontextmenu="return false;">
-    <source id="mp4_src" src="HandScanningVideo.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
-  </video>
-</div>
+  <div class="overlay" id="overlay">
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+    <div class="container">
+      <div class="card">
+        <img id="card1" src="./cards/card1.png" width="215" height="386">
+      </div>
+      <div class="card">
+        <img id="card2" src="./cards/card2.png" width="215" height="386">
+      </div>
+      <div class="card">
+        <img id="card3" src="./cards/card3.png" width="215" height="386">
+      </div>
+      <div class="card">
+        <img id="card4" src="./cards/card4.png" width="215" height="386">
+      </div>
+  </div>
+  </div>
+
+  <div class="dock-item" data-long-press-delay="3000">
+    <video id="myVideo" autoplay loop onloadstart="this.volume=0" controlsList="nodownload" oncontextmenu="return false;">
+      <source id="mp4_src" src="./videos/train_window.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
 
 
   
 </body>
+
+<script type="text/javascript">
+
+
+
+//   document.getElementById('card1').onmouseover(function() {
+//   document.getElementById('card1').setTimeout(function() {
+//         var x = document.getElementById("overlay");
+//       if (x.style.display === "none") {
+//         x.style.display = "block";
+//       } else {
+//         x.style.display = "none";
+//       }
+//       document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+// }, 2000);
+// });
+
+  (function(){
+    var timer;
+    var card1 = document.getElementById('card1');
+
+    card1.onmouseover = function(){
+      timer = setTimeout(function(){
+        var c2 = document.getElementById("card2");
+        var c3 = document.getElementById("card3");
+        var c4 = document.getElementById("card4");
+        if (c2.style.display === "none") {
+          c2.style.display = "block";
+          c3.style.display = "block";
+          c4.style.display = "block";
+        } else {
+          c2.style.display = "none";
+          c3.style.display = "none";
+          c4.style.display = "none";
+        }
+        document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+      }, 1000);
+    }
+
+    card1.onmouseout = function(){
+        clearTimeout(timer);
+    }
+  })();
+
+
+  (function(){
+    var timer;
+    var card2 = document.getElementById('card2');
+
+    card2.onmouseover = function(){
+      timer = setTimeout(function(){
+        var c1 = document.getElementById("card1");
+        var c3 = document.getElementById("card3");
+        var c4 = document.getElementById("card4");
+        if (c1.style.display === "none") {
+          c1.style.display = "block";
+          c3.style.display = "block";
+          c4.style.display = "block";
+        } else {
+          c1.style.display = "none";
+          c3.style.display = "none";
+          c4.style.display = "none";
+        }
+        document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+      }, 1000);
+    }
+
+    card2.onmouseout = function(){
+        clearTimeout(timer);
+    }
+  })();
+
+
+  (function(){
+    var timer;
+    var card3 = document.getElementById('card3');
+
+    card3.onmouseover = function(){
+      timer = setTimeout(function(){
+        var c1 = document.getElementById("card1");
+        var c2 = document.getElementById("card2");
+        var c4 = document.getElementById("card4");
+        if (c1.style.display === "none") {
+          c1.style.display = "block";
+          c2.style.display = "block";
+          c4.style.display = "block";
+        } else {
+          c1.style.display = "none";
+          c2.style.display = "none";
+          c4.style.display = "none";
+        }
+        document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+      }, 1000);
+    }
+
+    card3.onmouseout = function(){
+        clearTimeout(timer);
+    }
+  })();
+
+
+  (function(){
+    var timer;
+    var card4 = document.getElementById('card4');
+
+    card4.onmouseover = function(){
+      timer = setTimeout(function(){
+        var c1 = document.getElementById("card1");
+        var c2 = document.getElementById("card2");
+        var c3 = document.getElementById("card3");
+        if (c1.style.display === "none") {
+          c1.style.display = "block";
+          c2.style.display = "block";
+          c3.style.display = "block";
+        } else {
+          c1.style.display = "none";
+          c2.style.display = "none";
+          c3.style.display = "none";
+        }
+        document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+      }, 1000);
+    }
+
+    card4.onmouseout = function(){
+        clearTimeout(timer);
+    }
+  })();
+
+  // function myTimeout() = setTimeout(pickCard(), 3000);
+
+  // function pickCard(){
+
+  //     var x = document.getElementById("overlay");
+  //      if (x.style.display === "none") {
+  //        x.style.display = "block";
+  //      } else {
+  //        x.style.display = "none";
+  //      }
+  //      document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+
+  // }
+
+  // function clearTimer(){
+  //   clearTimeout(myTimeout);
+  // }
+
+
+
+  // var card1 = document.getElementById("card1"); //grab the element
+  // card1.onclick = function() {   var x = document.getElementById("overlay");
+  //   if (x.style.display === "none") {
+  //     x.style.display = "block";
+  //   } else {
+  //     x.style.display = "none";
+  //   }
+  //   document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+  // }
+
+  // el = document.getElementById('card1');
+  // el.onmouseover = function(){el.click();}
+  // el.onclick = function(){
+  //   var x = document.getElementById("overlay");
+  //     if (x.style.display === "none") {
+  //       x.style.display = "block";
+  //     } else {
+  //       x.style.display = "none";
+  //     }
+  //     document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+  // }
+
+      // listen for long-press event
+    document.getElementById('card1').addEventListener('long-press', function(e) {
+     e.target.setAttribute('data-editing', 'true');
+      var x = document.getElementById("overlay");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+      document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+    });
+  
+    !function(t,e){"use strict";function n(){this.dispatchEvent(new CustomEvent("long-press",{bubbles:!0,cancelable:!0})),clearTimeout(o),console&&console.log&&console.log("long-press fired on "+this.outerHTML)}var o=null,u="ontouchstart"in t||navigator.MaxTouchPoints>0||navigator.msMaxTouchPoints>0,s=u?"touchstart":"mousedown",i=u?"touchcancel":"mouseout",a=u?"touchend":"mouseup",c=u?"touchmove":"mousemove";"initCustomEvent"in e.createEvent("CustomEvent")&&(t.CustomEvent=function(t,n){n=n||{bubbles:!1,cancelable:!1,detail:void 0};var o=e.createEvent("CustomEvent");return o.initCustomEvent(t,n.bubbles,n.cancelable,n.detail),o},t.CustomEvent.prototype=t.Event.prototype),e.addEventListener(s,function(t){var e=t.target,u=parseInt(e.getAttribute("data-long-press-delay")||"3000",10);o=setTimeout(n.bind(e),u)}),e.addEventListener(a,function(t){clearTimeout(o)}),e.addEventListener(i,function(t){clearTimeout(o)}),e.addEventListener(c,function(t){clearTimeout(o)})}(this,document);
+
+  var card2 = document.getElementById("card2"); //grab the element
+  card2.onclick = function() {
+    var x = document.getElementById("overlay");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+    document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+  }
+
+  var card3 = document.getElementById("card3"); //grab the element
+  card3.onclick = function() {
+    var x = document.getElementById("overlay");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+    document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+  }
+
+  var card4 = document.getElementById("card4"); //grab the element
+  card4.onclick = function() {
+    var x = document.getElementById("overlay");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+    document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+  }
+
+</script>
+
 </html>
