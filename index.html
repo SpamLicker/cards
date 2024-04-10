@@ -9,7 +9,7 @@
   <style type="text/css">
     
     body {
-/*      cursor: none;*/
+      cursor: none;
       touch-action: none;
       background-color: black;
     }
@@ -138,6 +138,22 @@
 .container .card:last-child {
   margin-right: 0;
 }
+
+#tarot1 {
+  display: none;
+}
+
+#tarot2 {
+  display: none;
+}
+
+#tarot3 {
+  display: none;
+}
+
+#tarot4 {
+  display: none;
+}
   
   </style>
   
@@ -162,15 +178,19 @@
     <div class="container">
       <div class="card">
         <img id="card1" src="./cards/card1.png" width="215" height="386">
+        <img id="tarot1" src="./cards/tarot1.png" width="215" height="386">
       </div>
       <div class="card">
         <img id="card2" src="./cards/card2.png" width="215" height="386">
+        <img id="tarot2" src="./cards/tarot2.png" width="215" height="386">
       </div>
       <div class="card">
         <img id="card3" src="./cards/card3.png" width="215" height="386">
+        <img id="tarot3" src="./cards/tarot3.png" width="215" height="386">
       </div>
       <div class="card">
         <img id="card4" src="./cards/card4.png" width="215" height="386">
+        <img id="tarot4" src="./cards/tarot4.png" width="215" height="386">
       </div>
   </div>
   </div>
@@ -213,17 +233,21 @@
 
     card1.onmouseover = function(){
       timer = setTimeout(function(){
+        var c1 = document.getElementById("card1");
         var c2 = document.getElementById("card2");
         var c3 = document.getElementById("card3");
         var c4 = document.getElementById("card4");
+        var t1 = document.getElementById("tarot1");
         if (c2.style.display === "none") {
           c2.style.display = "block";
           c3.style.display = "block";
           c4.style.display = "block";
         } else {
+          c1.style.display = "none";
           c2.style.display = "none";
           c3.style.display = "none";
           c4.style.display = "none";
+          t1.style.display = "block";
         }
       //  document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
        // document.getElementById('myVideo').style.display = "none";
@@ -246,16 +270,20 @@
     card2.onmouseover = function(){
       timer = setTimeout(function(){
         var c1 = document.getElementById("card1");
+        var c2 = document.getElementById("card2");
         var c3 = document.getElementById("card3");
         var c4 = document.getElementById("card4");
+        var t2 = document.getElementById("tarot2");
         if (c1.style.display === "none") {
           c1.style.display = "block";
           c3.style.display = "block";
           c4.style.display = "block";
         } else {
           c1.style.display = "none";
+          c2.style.display = "none";
           c3.style.display = "none";
           c4.style.display = "none";
+          t2.style.display = "block";
         }
         document.getElementById('myVideo').classList.add("hidden");
         document.getElementById('videohue').style.background="rgba(90, 33, 26, 0.5)";
@@ -276,7 +304,9 @@
       timer = setTimeout(function(){
         var c1 = document.getElementById("card1");
         var c2 = document.getElementById("card2");
+        var c3 = document.getElementById("card3");
         var c4 = document.getElementById("card4");
+        var t3 = document.getElementById("tarot3");
         if (c1.style.display === "none") {
           c1.style.display = "block";
           c2.style.display = "block";
@@ -284,7 +314,9 @@
         } else {
           c1.style.display = "none";
           c2.style.display = "none";
+          c3.style.display = "none";
           c4.style.display = "none";
+          t3.style.display = "block";
         }
         document.getElementById('myVideo').classList.add("hidden");
         document.getElementById('videohue').style.background="rgba(104, 51, 75, 0.5)";
@@ -306,6 +338,8 @@
         var c1 = document.getElementById("card1");
         var c2 = document.getElementById("card2");
         var c3 = document.getElementById("card3");
+        var c4 = document.getElementById("card4");
+        var t4 = document.getElementById("tarot4");
         if (c1.style.display === "none") {
           c1.style.display = "block";
           c2.style.display = "block";
@@ -314,6 +348,8 @@
           c1.style.display = "none";
           c2.style.display = "none";
           c3.style.display = "none";
+          c4.style.display = "none";
+          t4.style.display = "block";
         }
         document.getElementById('myVideo').classList.add("hidden");
         document.getElementById('videohue').style.background="rgba(25, 49, 69, 0.5)";
