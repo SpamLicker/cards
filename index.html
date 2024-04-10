@@ -12,6 +12,7 @@
 /*      cursor: none;*/
       touch-action: none;
       background-color: black;
+      overflow: hidden;
     }
 
     .dock-item {
@@ -36,6 +37,12 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s 2s, opacity 2s linear;
+}
+
+    .visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
 }
 
 @keyframes colorize {
@@ -81,7 +88,7 @@
 }
 
 .overlay {
-  min-height: 100vh;
+  min-height: 60vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -96,6 +103,7 @@
     .container {
   display: block;
   width: 100%;
+  margin-left: 20%;
 }
 
 .card {
@@ -105,12 +113,32 @@
   padding: 10px 3px;
   /*setting width for each and every card element as well as -10px for removing the margin width for 5 elements*/
   width: calc( 100% / 5 - 10px);
+  position: relative;
 }
 
 .card img{
   float: right;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: 1s;
 }
 
+.card img:nth-child(2)
+{
+  transform: rotateY(180deg);
+}
+
+.card:hover img:nth-child(2)
+{
+/*  transform: rotateY(0deg);
+  transition-delay:2s*/
+}
+
+.card:hover img:nth-child(1)
+{
+/*  transform: rotateY(-180deg);
+  transition-delay:2s*/
+}
 
 /*first element*/
 
@@ -139,7 +167,8 @@
   margin-right: 0;
 }
 
-#tarot1 {
+
+/*#tarot1 {
   display: none;
 }
 
@@ -153,7 +182,7 @@
 
 #tarot4 {
   display: none;
-}
+}*/
   
   </style>
   
@@ -173,22 +202,22 @@
 </head>
 <body>
 
-  <div class="overlay" id="overlay">
-    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+  <div class="overlay hidden" id="overlay">     
+    <h2></h2>
     <div class="container">
-      <div class="card">
+      <div class="card" id="carddiv1">
         <img id="card1" src="./cards/card1.png" width="215" height="386">
         <img id="tarot1" src="./cards/tarot1.png" width="215" height="386">
       </div>
-      <div class="card">
+      <div class="card" id="carddiv2">
         <img id="card2" src="./cards/card2.png" width="215" height="386">
         <img id="tarot2" src="./cards/tarot2.png" width="215" height="386">
       </div>
-      <div class="card">
+      <div class="card" id="carddiv3">
         <img id="card3" src="./cards/card3.png" width="215" height="386">
         <img id="tarot3" src="./cards/tarot3.png" width="215" height="386">
       </div>
-      <div class="card">
+      <div class="card" id="carddiv4">
         <img id="card4" src="./cards/card4.png" width="215" height="386">
         <img id="tarot4" src="./cards/tarot4.png" width="215" height="386">
       </div>
@@ -214,6 +243,71 @@
 <script type="text/javascript">
 
 
+  document.body.onmousemove = (function() {
+    var timer,
+        timer250,
+        onmousestop = function() {
+
+          // code to do on stop
+         // document.getElementById('overlay').style.display = "none";
+                    document.getElementById('overlay').classList.remove("visible");
+          document.getElementById('overlay').classList.add("hidden");
+
+                    document.getElementById('myVideo').classList.remove("hidden");
+          document.getElementById('myVideo').classList.add("visible");
+
+          document.getElementById("card1").style.transform = "rotateY(0deg)";
+          document.getElementById("card2").style.transform = "rotateY(0deg)";
+          document.getElementById("card3").style.transform = "rotateY(0deg)";
+          document.getElementById("card4").style.transform = "rotateY(0deg)";
+          document.getElementById("tarot1").style.transform = "rotateY(180deg)";
+          document.getElementById("tarot2").style.transform = "rotateY(180deg)";
+          document.getElementById("tarot3").style.transform = "rotateY(180deg)";
+          document.getElementById("tarot4").style.transform = "rotateY(180deg)";
+
+
+          clearTimeout( timer250 ); // I'm assuming we don't want this to happen if mouse stopped
+          timer = null;  // this needs to be falsy next mousemove start
+        };
+    return function() {
+      if (!timer) {
+
+        // code to do on start
+
+        timer250 = setTimeout(function () { // you can replace this with whatever
+
+          // code to do when 250 millis have passed
+
+          //document.getElementById('overlay').style.display = "block";
+          document.getElementById('overlay').classList.remove("hidden");
+          document.getElementById('overlay').classList.add("visible");
+          document.getElementById('card1').classList.remove("hidden");
+          document.getElementById('card2').classList.remove("hidden");
+          document.getElementById('card3').classList.remove("hidden");
+          document.getElementById('card4').classList.remove("hidden");
+          document.getElementById('card1').classList.add("visible");
+          document.getElementById('card2').classList.add("visible");
+          document.getElementById('card3').classList.add("visible");
+          document.getElementById('card4').classList.add("visible");
+
+
+
+          
+
+          
+
+        }, 2000 );
+      }
+      // we are still moving, or this is our first time here...
+      clearTimeout( timer );  // remove active end timer
+      timer = setTimeout( onmousestop, 5000 );  // delay the stopping action another 25 millis
+    };
+
+  })();
+
+
+
+
 
 //   document.getElementById('card1').onmouseover(function() {
 //   document.getElementById('card1').setTimeout(function() {
@@ -230,36 +324,39 @@
   (function(){
     var timer;
     var card1 = document.getElementById('card1');
+    var tarot1 = document.getElementById('card1');
 
     card1.onmouseover = function(){
       timer = setTimeout(function(){
-        var c1 = document.getElementById("card1");
-        var c2 = document.getElementById("card2");
-        var c3 = document.getElementById("card3");
-        var c4 = document.getElementById("card4");
-        var t1 = document.getElementById("tarot1");
-        if (c2.style.display === "none") {
-          c2.style.display = "block";
-          c3.style.display = "block";
-          c4.style.display = "block";
-        } else {
-          c1.style.display = "none";
-          c2.style.display = "none";
-          c3.style.display = "none";
-          c4.style.display = "none";
-          t1.style.display = "block";
-        }
-      //  document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+
+          document.getElementById("card1").style.transform = "rotateY(180deg)";
+          document.getElementById("tarot1").style.transform = "rotateY(0deg)";
+
+          document.getElementById("card1").classList.remove("visible");
+          document.getElementById("card2").classList.remove("visible");
+          document.getElementById("card3").classList.remove("visible");
+          document.getElementById("card4").classList.remove("visible");
+
+          document.getElementById("card2").classList.add("hidden");
+          document.getElementById("card3").classList.add("hidden");
+          document.getElementById("card4").classList.add("hidden");
+
+          document.getElementById('myVideo').classList.remove("visible");
+          document.getElementById('myVideo').classList.add("hidden");
+
+          document.getElementById('videohue').style.background="rgba(39, 74, 70, 0.5)";
+        
+       // document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
        // document.getElementById('myVideo').style.display = "none";
        // document.getElementById('myVideo').classList.add("videohue");
-        document.getElementById('myVideo').classList.add("hidden");
-            document.getElementById('videohue').style.background="rgba(39, 74, 70, 0.5)";
+
       }, 2000);
     }
 
     card1.onmouseout = function(){
         clearTimeout(timer);
     }
+
   })();
 
 
@@ -269,24 +366,23 @@
 
     card2.onmouseover = function(){
       timer = setTimeout(function(){
-        var c1 = document.getElementById("card1");
-        var c2 = document.getElementById("card2");
-        var c3 = document.getElementById("card3");
-        var c4 = document.getElementById("card4");
-        var t2 = document.getElementById("tarot2");
-        if (c1.style.display === "none") {
-          c1.style.display = "block";
-          c3.style.display = "block";
-          c4.style.display = "block";
-        } else {
-          c1.style.display = "none";
-          c2.style.display = "none";
-          c3.style.display = "none";
-          c4.style.display = "none";
-          t2.style.display = "block";
-        }
-        document.getElementById('myVideo').classList.add("hidden");
-        document.getElementById('videohue').style.background="rgba(90, 33, 26, 0.5)";
+
+          document.getElementById("card2").style.transform = "rotateY(180deg)";
+          document.getElementById("tarot2").style.transform = "rotateY(0deg)";
+
+          document.getElementById("card1").classList.remove("visible");
+          document.getElementById("card2").classList.remove("visible");
+          document.getElementById("card3").classList.remove("visible");
+          document.getElementById("card4").classList.remove("visible");
+
+          document.getElementById("card1").classList.add("hidden");
+          document.getElementById("card3").classList.add("hidden");
+          document.getElementById("card4").classList.add("hidden");
+
+          document.getElementById('myVideo').classList.remove("visible");
+          document.getElementById('myVideo').classList.add("hidden");
+
+          document.getElementById('videohue').style.background="rgba(90, 33, 26, 0.5)";
       }, 2000);
     }
 
@@ -302,23 +398,22 @@
 
     card3.onmouseover = function(){
       timer = setTimeout(function(){
-        var c1 = document.getElementById("card1");
-        var c2 = document.getElementById("card2");
-        var c3 = document.getElementById("card3");
-        var c4 = document.getElementById("card4");
-        var t3 = document.getElementById("tarot3");
-        if (c1.style.display === "none") {
-          c1.style.display = "block";
-          c2.style.display = "block";
-          c4.style.display = "block";
-        } else {
-          c1.style.display = "none";
-          c2.style.display = "none";
-          c3.style.display = "none";
-          c4.style.display = "none";
-          t3.style.display = "block";
-        }
-        document.getElementById('myVideo').classList.add("hidden");
+
+          document.getElementById("card3").style.transform = "rotateY(180deg)";
+          document.getElementById("tarot3").style.transform = "rotateY(0deg)";
+
+          document.getElementById("card1").classList.remove("visible");
+          document.getElementById("card2").classList.remove("visible");
+          document.getElementById("card3").classList.remove("visible");
+          document.getElementById("card4").classList.remove("visible");
+
+          document.getElementById("card1").classList.add("hidden");
+          document.getElementById("card2").classList.add("hidden");
+          document.getElementById("card4").classList.add("hidden");
+
+          document.getElementById('myVideo').classList.remove("visible");
+          document.getElementById('myVideo').classList.add("hidden");
+
         document.getElementById('videohue').style.background="rgba(104, 51, 75, 0.5)";
       }, 2000);
     }
@@ -335,23 +430,22 @@
 
     card4.onmouseover = function(){
       timer = setTimeout(function(){
-        var c1 = document.getElementById("card1");
-        var c2 = document.getElementById("card2");
-        var c3 = document.getElementById("card3");
-        var c4 = document.getElementById("card4");
-        var t4 = document.getElementById("tarot4");
-        if (c1.style.display === "none") {
-          c1.style.display = "block";
-          c2.style.display = "block";
-          c3.style.display = "block";
-        } else {
-          c1.style.display = "none";
-          c2.style.display = "none";
-          c3.style.display = "none";
-          c4.style.display = "none";
-          t4.style.display = "block";
-        }
-        document.getElementById('myVideo').classList.add("hidden");
+
+          document.getElementById("card4").style.transform = "rotateY(180deg)";
+          document.getElementById("tarot4").style.transform = "rotateY(0deg)";
+
+          document.getElementById("card1").classList.remove("visible");
+          document.getElementById("card2").classList.remove("visible");
+          document.getElementById("card3").classList.remove("visible");
+          document.getElementById("card4").classList.remove("visible");
+
+          document.getElementById("card1").classList.add("hidden");
+          document.getElementById("card2").classList.add("hidden");
+          document.getElementById("card3").classList.add("hidden");
+
+          document.getElementById('myVideo').classList.remove("visible");
+          document.getElementById('myVideo').classList.add("hidden");
+
         document.getElementById('videohue').style.background="rgba(25, 49, 69, 0.5)";
       }, 2000);
     }
@@ -360,6 +454,9 @@
         clearTimeout(timer);
     }
   })();
+
+
+
 
   // function myTimeout() = setTimeout(pickCard(), 3000);
 
