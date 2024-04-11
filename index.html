@@ -73,7 +73,7 @@
     left: 50%;
     width: 400px;
 
-    height: 120px;
+    height: auto;
     margin-left: -12%;
     margin-top: -400px;
     padding-left: 20px;
@@ -246,6 +246,18 @@
   <div class="modal hidden" id="modal">
     <h1>Clear your mind and focus on the card that calls to you</h1>
   </div>
+  <div class="modal hidden" id="tarot1-text">
+    <h1>The unknown, mystery, intuition, spiritual knowledge, and the subconscious mind</h1>
+  </div>
+  <div class="modal hidden" id="tarot2-text">
+    <h1>Wisdom, circumspection, discernment, trials, sacrifice, intuition, divination, prophecy</h1>
+  </div>
+  <div class="modal hidden" id="tarot3-text">
+    <h1>Birth, commencement, creativity, inventiveness, new beginnings</h1>
+  </div>
+  <div class="modal hidden" id="tarot4-text">
+    <h1>Fruitfulness, action, initiative, length of days; the unknown, clandestine; also difficulty, doubt, ignorance</h1>
+  </div>
   <div class="overlay hidden" id="overlay">     
     <h2></h2>
     <div class="container">
@@ -271,15 +283,15 @@
 
 
   <div class="dock-item" data-long-press-delay="3000">
-
     <video id="myVideo" autoplay loop onloadstart="this.volume=0" controlsList="nodownload" oncontextmenu="return false;">
       <source id="mp4_src" src="./videos/train_window.mp4" type="video/mp4">
     </video>
 
-<div class="videohue" id="videohue"></div>
-                    <video id="card1Video" autoplay loop onloadstart="this.volume=0" controlsList="nodownload" oncontextmenu="return false;">
+    <div class="videohue" id="videohue"></div>
+
+    <video id="card1Video" autoplay loop onloadstart="this.volume=0" controlsList="nodownload" oncontextmenu="return false;">
       <source id="mp4_src" src="./videos/train_window_clouds.mp4" type="video/mp4">
-            </video>
+    </video>
   </div>
 
 
@@ -310,6 +322,15 @@
           document.getElementById("tarot2").style.transform = "rotateY(180deg)";
           document.getElementById("tarot3").style.transform = "rotateY(180deg)";
           document.getElementById("tarot4").style.transform = "rotateY(180deg)";
+
+          document.getElementById('tarot1-text').classList.remove("visible");
+          document.getElementById('tarot1-text').classList.add("hidden");
+          document.getElementById('tarot2-text').classList.remove("visible");
+          document.getElementById('tarot2-text').classList.add("hidden");
+          document.getElementById('tarot3-text').classList.remove("visible");
+          document.getElementById('tarot3-text').classList.add("hidden");
+          document.getElementById('tarot4-text').classList.remove("visible");
+          document.getElementById('tarot4-text').classList.add("hidden");
 
           document.getElementById('modal').classList.remove("visibleTemp");
           document.getElementById("modal").classList.add("hidden");
@@ -396,6 +417,9 @@
           document.getElementById('myVideo').classList.remove("visible");
           document.getElementById('myVideo').classList.add("hidden");
 
+          document.getElementById('tarot1-text').classList.remove("hidden");
+          document.getElementById('tarot1-text').classList.add("visible");
+
           document.getElementById('videohue').style.background="rgba(39, 74, 70, 0.5)";
         
        // document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
@@ -434,6 +458,9 @@
           document.getElementById('myVideo').classList.remove("visible");
           document.getElementById('myVideo').classList.add("hidden");
 
+          document.getElementById('tarot2-text').classList.remove("hidden");
+          document.getElementById('tarot2-text').classList.add("visible");
+
           document.getElementById('videohue').style.background="rgba(90, 33, 26, 0.5)";
       }, 2000);
     }
@@ -466,6 +493,9 @@
           document.getElementById('myVideo').classList.remove("visible");
           document.getElementById('myVideo').classList.add("hidden");
 
+          document.getElementById('tarot3-text').classList.remove("hidden");
+          document.getElementById('tarot3-text').classList.add("visible");
+
           document.getElementById('videohue').style.background="rgba(104, 51, 75, 0.5)";
       }, 2000);
     }
@@ -497,6 +527,9 @@
 
           document.getElementById('myVideo').classList.remove("visible");
           document.getElementById('myVideo').classList.add("hidden");
+
+          document.getElementById('tarot4-text').classList.remove("hidden");
+          document.getElementById('tarot4-text').classList.add("visible");
 
         document.getElementById('videohue').style.background="rgba(25, 49, 69, 0.5)";
       }, 2000);
