@@ -26,24 +26,66 @@
       z-index: -1;
     }
 
-        #card1Video {
+    #card1Video {
       width: 100% !important;
       object-fit: fill;
       flex: 1 0 0;
       z-index: -3;
     }
 
-    .hidden {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 2s, opacity 2s linear;
+  .visibleTemp {
+    visibility: visible;
+    opacity: 0;
+    animation: fadeinout 7s linear forwards;
+  }
+
+  @keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+
+  .hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+  }
+
+  .visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+  }
+
+
+.overlayStart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
 }
 
-    .visible {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 2s linear;
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+
+    height: 120px;
+    margin-left: -12%;
+    margin-top: -400px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgba(0,0,200,0.7);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+  
+    z-index: 11;
 }
+
 
 @keyframes colorize {
     0% {
@@ -201,7 +243,9 @@
   </script>
 </head>
 <body>
-
+  <div class="modal hidden" id="modal">
+    <h1>Clear your mind and focus on the card that calls to you</h1>
+  </div>
   <div class="overlay hidden" id="overlay">     
     <h2></h2>
     <div class="container">
@@ -223,6 +267,8 @@
       </div>
   </div>
   </div>
+
+
 
   <div class="dock-item" data-long-press-delay="3000">
 
@@ -248,7 +294,7 @@
         timer250,
         onmousestop = function() {
 
-          // code to do on stop
+
          // document.getElementById('overlay').style.display = "none";
                     document.getElementById('overlay').classList.remove("visible");
           document.getElementById('overlay').classList.add("hidden");
@@ -265,18 +311,21 @@
           document.getElementById("tarot3").style.transform = "rotateY(180deg)";
           document.getElementById("tarot4").style.transform = "rotateY(180deg)";
 
+          document.getElementById('modal').classList.remove("visibleTemp");
+          document.getElementById("modal").classList.add("hidden");
 
-          clearTimeout( timer250 ); // I'm assuming we don't want this to happen if mouse stopped
-          timer = null;  // this needs to be falsy next mousemove start
+
+          clearTimeout( timer250 );
+          timer = null; 
+
         };
     return function() {
       if (!timer) {
 
-        // code to do on start
 
-        timer250 = setTimeout(function () { // you can replace this with whatever
+        timer250 = setTimeout(function () {
 
-          // code to do when 250 millis have passed
+
 
           //document.getElementById('overlay').style.display = "block";
           document.getElementById('overlay').classList.remove("hidden");
@@ -289,6 +338,9 @@
           document.getElementById('card2').classList.add("visible");
           document.getElementById('card3').classList.add("visible");
           document.getElementById('card4').classList.add("visible");
+
+          document.getElementById('modal').classList.remove("hidden");
+          document.getElementById("modal").classList.add("visibleTemp");
 
 
 
@@ -414,7 +466,7 @@
           document.getElementById('myVideo').classList.remove("visible");
           document.getElementById('myVideo').classList.add("hidden");
 
-        document.getElementById('videohue').style.background="rgba(104, 51, 75, 0.5)";
+          document.getElementById('videohue').style.background="rgba(104, 51, 75, 0.5)";
       }, 2000);
     }
 
