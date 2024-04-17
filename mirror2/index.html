@@ -217,7 +217,7 @@
 
 
         header {
-            pointer-events: none;
+          
         position:absolute;
       height: 100vh;
       opacity: 1;
@@ -229,6 +229,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    header:active{
+        pointer-events: none;
+    }
+
+    .cl1{
+       
+       
+    }
+
+
+        .cl1:hover{
+       
+    }
+
+            .cl1:active{
+        
     }
 
         header, section, footer {
@@ -255,9 +273,9 @@
            <canvas></canvas>
       <header>
     <h1>Select your potion
-    <img width="350" height="500" src="potion1.png">
-    <img width="350" height="500" src="potion2.png">
-    <img width="350" height="500" src="potion3.png">
+    <img class="cl1" width="350" height="500" src="potion1.png">
+    <img class="cl1" width="350" height="500" src="potion2.png">
+    <img class="cl1" width="350" height="500" src="potion3.png">
     </h1>
 
   </header>
@@ -265,5 +283,21 @@
 
 
         <script src="./script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+
+
+        $(".cl1")
+  .on("mousedown", function(e) {
+    e.preventDefault()
+   // this.style.opacity = "0.5"
+    splatStack.push(parseInt(Math.random() * 20) + 5);
+  })
+  .on("mouseup", function(e) {
+    e.preventDefault()
+  //  this.style.opacity = "1"
+  });
+    </script>
+
     </body>
 </html>
