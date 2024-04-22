@@ -13,11 +13,11 @@
         <link rel="icon" href="logo.png">
 
         <title>Mirror 2</title>
-        <meta name="description" content="A WebGL fluid simulation that works in mobile browsers.">
+        <meta name="description" content="Potion Picker">
 
         <meta property="og:type" content="website">
-        <meta property="og:title" content="Webgl Fluid Simulation">
-        <meta property="og:description" content="A WebGL fluid simulation that works in mobile browsers.">
+        <meta property="og:title" content="Potion Picker">
+        <meta property="og:description" content="Potion Picker">
 
         <script type="text/javascript" src="dat.gui.min.js"></script>
         <style>
@@ -300,12 +300,32 @@ transition-property: opacity;
 .question.active {         
     opacity: 1;
 transition-property: opacity;
-    transition: opacity 1s, transform 0ms cubic-bezier(.09,.52,.25,1); 
-        transform: scale(1) translate3D(0,0,0); }
+    transition: opacity 1s, transform 0s cubic-bezier(.09,.52,.25,1); 
+        transform: scale(1) translate3D(0,20px,0); }
+
+    .question.zoom {         
+        opacity: 0;
+        transform: scale(1) translate3D(0,20px,0);
+        transition: opacity 1s, transform 1s cubic-bezier(.09,.52,.25,1); 
+    }
 
 .buttonList {
   display: flex;
   flex-direction: column;
+}
+
+img{
+margin: 100px;
+}
+
+h1{
+    margin-top:100px;
+    max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+     border-radius: 25px;
+     background-color:rgba(0, 0, 0, 0.5)
 }
 
         </style>
@@ -333,42 +353,42 @@ transition-property: opacity;
 
   <div class="question questionfade active" id="q1">
     <h1>Would you party on in the rain?</h1>
-    <img class="cl1 goTo" id="q1-yes" data-goto="overnight" width="500" height="500" src="yes.png">
-    <img class="cl1 goTo" id="q1-no" data-goto="solo" width="500" height="500" src="no.png">
+    <img class="cl1 goTo" id="q1-yes" data-goto="overnight" width="300" height="300" src="yes.png">
+    <img class="cl1 goTo" id="q1-no" data-goto="solo" width="300" height="300" src="no.png">
   </div>
 
 
   <div class="question questionfade" id="q2-1">
     <h1>Would you ever camp overnight?</h1>
-    <img class="cl1 goTo" id="q2-1-yes" data-goto="mosh-pit" width="500" height="500" src="yes.png">
-    <img class="cl1 goTo" id="q2-1-no" data-goto="traffic" width="500" height="500" src="no.png">
+    <img class="cl1 goTo" id="q2-1-yes" data-goto="mosh-pit" width="300" height="300" src="yes.png">
+    <img class="cl1 goTo" id="q2-1-no" data-goto="traffic" width="300" height="300" src="no.png">
   </div>
   <div class="question questionfade" id="q2-2">
     <h1>Would you get stuck in with the mosh pit?</h1>
-    <img class="cl1 goTo" id="q2-2-yes" data-goto="self-love" width="500" height="500" src="yes.png">
-    <img class="cl1 goTo" id="q2-2-no" data-goto="adventure" width="500" height="500" src="no.png">
+    <img class="cl1 goTo" id="q2-2-yes" data-goto="self-love" width="300" height="300" src="yes.png">
+    <img class="cl1 goTo" id="q2-2-no" data-goto="adventure" width="300" height="300" src="no.png">
   </div>
 
 
   <div class="question questionfade" id="q3-1">
     <h1>Would you leave early to beat the traffic?</h1>
-    <img class="cl1 goTo" id="q3-1-yes" data-goto="positive" width="500" height="500" src="yes.png">
-    <img class="cl1 goTo" id="q3-1-no" data-goto="self-love" width="500" height="500" src="no.png">
+    <img class="cl1 goTo" id="q3-1-yes" data-goto="positive" width="300" height="300" src="yes.png">
+    <img class="cl1 goTo" id="q3-1-no" data-goto="self-love" width="300" height="300" src="no.png">
   </div>
   <div class="question questionfade" id="q3-2">
     <h1>Would you go and see your favourite act solo?</h1>
-    <img class="cl1 goTo" id="q3-2-yes" data-goto="schedule" width="500" height="500" src="yes.png">
-    <img class="cl1 goTo" id="q3-2-no" data-goto="front-row" width="500" height="500" src="no.png">
+    <img class="cl1 goTo" id="q3-2-yes" data-goto="schedule" width="300" height="300" src="yes.png">
+    <img class="cl1 goTo" id="q3-2-no" data-goto="front-row" width="300" height="300" src="no.png">
   </div>
   <div class="question questionfade" id="q3-3">
     <h1>Do you plan a schedule for the day?</h1>
-    <img class="cl1 goTo" id="q3-3-yes" data-goto="adventure" width="500" height="500" src="yes.png">
-    <img class="cl1 goTo" id="q3-3-no" data-goto="positive" width="500" height="500" src="no.png">
+    <img class="cl1 goTo" id="q3-3-yes" data-goto="adventure" width="300" height="300" src="yes.png">
+    <img class="cl1 goTo" id="q3-3-no" data-goto="positive" width="300" height="300" src="no.png">
   </div>
   <div class="question questionfade" id="q3-4">
     <h1>Would you push your way to the front row?</h1>
-    <img class="cl1 goTo" id="q3-4-yes" data-goto="self-love" width="500" height="500" src="yes.png">
-    <img class="cl1 goTo" id="q3-4-no" data-goto="adventure" width="500" height="500" src="no.png">
+    <img class="cl1 goTo" id="q3-4-yes" data-goto="self-love" width="300" height="300" src="yes.png">
+    <img class="cl1 goTo" id="q3-4-no" data-goto="adventure" width="300" height="300" src="no.png">
   </div>
 
 
@@ -493,7 +513,9 @@ transition-property: opacity;
             document.getElementById('q3-4-yes').onmousedown = function(){
                 document.getElementById("q3-4").classList.add("visited");
                 document.getElementById("q3-4").classList.remove("active");
-                document.getElementById("p1").classList.add("active");
+                setTimeout(function() {
+                    document.getElementById("p1").classList.add("active");
+                }, 1000);  
             };
 
             document.getElementById('q3-4-no').onmousedown = function(){
@@ -513,9 +535,9 @@ transition-property: opacity;
                 document.getElementById("q3-3").classList.remove("visited");
                 document.getElementById("q3-4").classList.remove("visited");
                 document.getElementById("p1").classList.remove("active");
-                setTimeout(function() {
+                document.body.onmousemove = (setTimeout(function() {
                     document.getElementById("q1").classList.add("active");
-                }, 1000);  
+                }, 3000)); 
             };
 
             document.getElementById('potion2').onmousedown = function(){
@@ -527,9 +549,9 @@ transition-property: opacity;
                 document.getElementById("q3-3").classList.remove("visited");
                 document.getElementById("q3-4").classList.remove("visited");
                 document.getElementById("p2").classList.remove("active");
-                setTimeout(function() {
+                document.body.onmousemove = (setTimeout(function() {
                     document.getElementById("q1").classList.add("active");
-                }, 1000);  
+                }, 3000));  
             };
 
             document.getElementById('potion3').onmousedown = function(){
@@ -541,9 +563,9 @@ transition-property: opacity;
                 document.getElementById("q3-3").classList.remove("visited");
                 document.getElementById("q3-4").classList.remove("visited");
                 document.getElementById("p3").classList.remove("active");
-                setTimeout(function() {
+                document.body.onmousemove = (setTimeout(function() {
                     document.getElementById("q1").classList.add("active");
-                }, 1000);  
+                }, 3000)); 
             };
 
             // function goto-overnight
@@ -564,6 +586,19 @@ transition-property: opacity;
             //     nextQuestion.classList.add('active');
             //   });
             // });
+
+//             function listener() {
+//     if (alerts != null) {
+//         clearAlert();
+//         window.removeEventListener("mousemove", listener, false);
+//     }
+// }
+
+// window.addEventListener("mousemove", listener, false);
+
+            // document.body.onmousemove = (setTimeout(function() {
+            //     document.getElementById("q1").classList.add("active");
+            // }, 3000));
 
 
         $(".cl1")
