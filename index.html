@@ -145,13 +145,13 @@
     .container {
   display: block;
   width: 100%;
-  margin-left: 20%;
+  margin-left: 15%;
 }
 
 .card {
 /*  border: 1px solid black;*/
   float: left;
-  margin: 1px;
+  margin: 80px;
   padding: 10px 3px;
   /*setting width for each and every card element as well as -10px for removing the margin width for 5 elements*/
   width: calc( 100% / 5 - 10px);
@@ -255,28 +255,28 @@
   <div class="modal hidden" id="tarot3-text">
     <h1>Birth, commencement, creativity, inventiveness, new beginnings</h1>
   </div>
-  <div class="modal hidden" id="tarot4-text">
+<!--   <div class="modal hidden" id="tarot4-text">
     <h1>Fruitfulness, action, initiative, length of days; the unknown, clandestine; also difficulty, doubt, ignorance</h1>
-  </div>
+  </div> -->
   <div class="overlay hidden" id="overlay">     
     <h2></h2>
     <div class="container">
       <div class="card" id="carddiv1">
-        <img id="card1" src="./cards/card1.png" width="215" height="386">
-        <img id="tarot1" src="./cards/tarot1.png" width="215" height="386">
+        <img id="card1" src="./cards/card1.png" width="300" height="503">
+        <img id="tarot1" src="./cards/tarot1.png" width="300" height="503">
       </div>
       <div class="card" id="carddiv2">
-        <img id="card2" src="./cards/card2.png" width="215" height="386">
-        <img id="tarot2" src="./cards/tarot2.png" width="215" height="386">
+        <img id="card2" src="./cards/card2.png" width="300" height="503">
+        <img id="tarot2" src="./cards/tarot2.png" width="300" height="503">
       </div>
       <div class="card" id="carddiv3">
-        <img id="card3" src="./cards/card3.png" width="215" height="386">
-        <img id="tarot3" src="./cards/tarot3.png" width="215" height="386">
+        <img id="card3" src="./cards/card3.png" width="300" height="503">
+        <img id="tarot3" src="./cards/tarot3.png" width="300" height="503">
       </div>
-      <div class="card" id="carddiv4">
-        <img id="card4" src="./cards/card4.png" width="215" height="386">
-        <img id="tarot4" src="./cards/tarot4.png" width="215" height="386">
-      </div>
+<!--       <div class="card" id="carddiv4">
+        <img id="card4" src="./cards/card4.png" width="250" height="419">
+        <img id="tarot4" src="./cards/tarot4.png" width="250" height="419">
+      </div> -->
   </div>
   </div>
 
@@ -317,11 +317,11 @@
           document.getElementById("card1").style.transform = "rotateY(0deg)";
           document.getElementById("card2").style.transform = "rotateY(0deg)";
           document.getElementById("card3").style.transform = "rotateY(0deg)";
-          document.getElementById("card4").style.transform = "rotateY(0deg)";
+          // document.getElementById("card4").style.transform = "rotateY(0deg)";
           document.getElementById("tarot1").style.transform = "rotateY(180deg)";
           document.getElementById("tarot2").style.transform = "rotateY(180deg)";
           document.getElementById("tarot3").style.transform = "rotateY(180deg)";
-          document.getElementById("tarot4").style.transform = "rotateY(180deg)";
+          // document.getElementById("tarot4").style.transform = "rotateY(180deg)";
 
           document.getElementById('tarot1-text').classList.remove("visible");
           document.getElementById('tarot1-text').classList.add("hidden");
@@ -329,8 +329,8 @@
           document.getElementById('tarot2-text').classList.add("hidden");
           document.getElementById('tarot3-text').classList.remove("visible");
           document.getElementById('tarot3-text').classList.add("hidden");
-          document.getElementById('tarot4-text').classList.remove("visible");
-          document.getElementById('tarot4-text').classList.add("hidden");
+          // document.getElementById('tarot4-text').classList.remove("visible");
+          // document.getElementById('tarot4-text').classList.add("hidden");
 
           document.getElementById('modal').classList.remove("visibleTemp");
           document.getElementById("modal").classList.add("hidden");
@@ -354,11 +354,11 @@
           document.getElementById('card1').classList.remove("hidden");
           document.getElementById('card2').classList.remove("hidden");
           document.getElementById('card3').classList.remove("hidden");
-          document.getElementById('card4').classList.remove("hidden");
+          // document.getElementById('card4').classList.remove("hidden");
           document.getElementById('card1').classList.add("visible");
           document.getElementById('card2').classList.add("visible");
           document.getElementById('card3').classList.add("visible");
-          document.getElementById('card4').classList.add("visible");
+          // document.getElementById('card4').classList.add("visible");
 
           document.getElementById('modal').classList.remove("hidden");
           document.getElementById("modal").classList.add("visibleTemp");
@@ -408,11 +408,11 @@
           document.getElementById("card1").classList.remove("visible");
           document.getElementById("card2").classList.remove("visible");
           document.getElementById("card3").classList.remove("visible");
-          document.getElementById("card4").classList.remove("visible");
+          // document.getElementById("card4").classList.remove("visible");
 
           document.getElementById("card2").classList.add("hidden");
           document.getElementById("card3").classList.add("hidden");
-          document.getElementById("card4").classList.add("hidden");
+          // document.getElementById("card4").classList.add("hidden");
 
           document.getElementById('myVideo').classList.remove("visible");
           document.getElementById('myVideo').classList.add("hidden");
@@ -452,11 +452,11 @@
           document.getElementById("card1").classList.remove("visible");
           document.getElementById("card2").classList.remove("visible");
           document.getElementById("card3").classList.remove("visible");
-          document.getElementById("card4").classList.remove("visible");
+          // document.getElementById("card4").classList.remove("visible");
 
           document.getElementById("card1").classList.add("hidden");
           document.getElementById("card3").classList.add("hidden");
-          document.getElementById("card4").classList.add("hidden");
+          // document.getElementById("card4").classList.add("hidden");
 
           document.getElementById('myVideo').classList.remove("visible");
           document.getElementById('myVideo').classList.add("hidden");
@@ -490,11 +490,11 @@
           document.getElementById("card1").classList.remove("visible");
           document.getElementById("card2").classList.remove("visible");
           document.getElementById("card3").classList.remove("visible");
-          document.getElementById("card4").classList.remove("visible");
+          // document.getElementById("card4").classList.remove("visible");
 
           document.getElementById("card1").classList.add("hidden");
           document.getElementById("card2").classList.add("hidden");
-          document.getElementById("card4").classList.add("hidden");
+          // document.getElementById("card4").classList.add("hidden");
 
           document.getElementById('myVideo').classList.remove("visible");
           document.getElementById('myVideo').classList.add("hidden");
@@ -515,42 +515,42 @@
   })();
 
 
-  (function(){
-    var timer;
-    var card4 = document.getElementById('card4');
+  // (function(){
+  //   var timer;
+  //   var card4 = document.getElementById('card4');
 
-    card4.onmouseover = function(){
-      timer = setTimeout(function(){
+  //   card4.onmouseover = function(){
+  //     timer = setTimeout(function(){
 
-          document.getElementById("card4").style.transform = "rotateY(180deg)";
-          document.getElementById("tarot4").style.transform = "rotateY(0deg)";
+  //         document.getElementById("card4").style.transform = "rotateY(180deg)";
+  //         document.getElementById("tarot4").style.transform = "rotateY(0deg)";
 
-          document.getElementById("card1").classList.remove("visible");
-          document.getElementById("card2").classList.remove("visible");
-          document.getElementById("card3").classList.remove("visible");
-          document.getElementById("card4").classList.remove("visible");
+  //         document.getElementById("card1").classList.remove("visible");
+  //         document.getElementById("card2").classList.remove("visible");
+  //         document.getElementById("card3").classList.remove("visible");
+  //         document.getElementById("card4").classList.remove("visible");
 
-          document.getElementById("card1").classList.add("hidden");
-          document.getElementById("card2").classList.add("hidden");
-          document.getElementById("card3").classList.add("hidden");
+  //         document.getElementById("card1").classList.add("hidden");
+  //         document.getElementById("card2").classList.add("hidden");
+  //         document.getElementById("card3").classList.add("hidden");
 
-          document.getElementById('myVideo').classList.remove("visible");
-          document.getElementById('myVideo').classList.add("hidden");
+  //         document.getElementById('myVideo').classList.remove("visible");
+  //         document.getElementById('myVideo').classList.add("hidden");
 
-          document.getElementById('tarot4-text').classList.remove("hidden");
-          document.getElementById('tarot4-text').classList.add("visible");
+  //         document.getElementById('tarot4-text').classList.remove("hidden");
+  //         document.getElementById('tarot4-text').classList.add("visible");
 
-          document.getElementById('modal').classList.remove("visibleTemp");
-          document.getElementById("modal").classList.add("hidden");
+  //         document.getElementById('modal').classList.remove("visibleTemp");
+  //         document.getElementById("modal").classList.add("hidden");
 
-        document.getElementById('videohue').style.background="rgba(25, 49, 69, 0.5)";
-      }, 3000);
-    }
+  //       document.getElementById('videohue').style.background="rgba(25, 49, 69, 0.5)";
+  //     }, 3000);
+  //   }
 
-    card4.onmouseout = function(){
-        clearTimeout(timer);
-    }
-  })();
+  //   card4.onmouseout = function(){
+  //       clearTimeout(timer);
+  //   }
+  // })();
 
 
 
@@ -633,16 +633,16 @@
     document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
   }
 
-  var card4 = document.getElementById("card4"); //grab the element
-  card4.onclick = function() {
-    var x = document.getElementById("overlay");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-    document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
-  }
+  // var card4 = document.getElementById("card4"); //grab the element
+  // card4.onclick = function() {
+  //   var x = document.getElementById("overlay");
+  //   if (x.style.display === "none") {
+  //     x.style.display = "block";
+  //   } else {
+  //     x.style.display = "none";
+  //   }
+  //   document.getElementById('myVideo').src = './videos/train_window_clouds.mp4';
+  // }
 
 </script>
 
