@@ -69,7 +69,7 @@
 
 .modal {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     width: 400px;
 
@@ -373,7 +373,7 @@
       }
       // we are still moving, or this is our first time here...
       clearTimeout( timer );  // remove active end timer
-      timer = setTimeout( onmousestop, 5000 );  // delay the stopping action another 25 millis
+      timer = setTimeout( onmousestop, 3000 );  // delay the stopping action another 25 millis
     };
 
   })();
@@ -429,7 +429,7 @@
        // document.getElementById('myVideo').style.display = "none";
        // document.getElementById('myVideo').classList.add("videohue");
 
-      }, 2000);
+      }, 3000);
     }
 
     card1.onmouseout = function(){
@@ -468,7 +468,7 @@
           document.getElementById("modal").classList.add("hidden");
 
           document.getElementById('videohue').style.background="rgba(90, 33, 26, 0.5)";
-      }, 2000);
+      }, 3000);
     }
 
     card2.onmouseout = function(){
@@ -506,7 +506,7 @@
           document.getElementById("modal").classList.add("hidden");
 
           document.getElementById('videohue').style.background="rgba(104, 51, 75, 0.5)";
-      }, 2000);
+      }, 3000);
     }
 
     card3.onmouseout = function(){
@@ -544,7 +544,7 @@
           document.getElementById("modal").classList.add("hidden");
 
         document.getElementById('videohue').style.background="rgba(25, 49, 69, 0.5)";
-      }, 2000);
+      }, 3000);
     }
 
     card4.onmouseout = function(){
