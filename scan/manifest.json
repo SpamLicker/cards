@@ -1,0 +1,17 @@
+{ 
+
+  "name": "Touch", 
+
+  "short_name": "Touch", 
+
+  "display": "fullscreen",
+
+  "start_url": "https://spamlicker.github.io/touch/",
+  
+  "icons": [
+  {
+    "src": "hand.png",
+    "sizes": "512x512"
+  }]
+
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name=”apple-mobile-web-app-capable” content=”yes“>
+  <link rel="manifest" href="manifest.json">
+  
+  <style type="text/css">
+    
+    body {
+      touch-action: none;
+      background-color: black;
+    }
+
+    .dock-item {
+      z-index: 0;
+    }
+  
+    #myVideo {
+      width: 100% !important;
+      object-fit: fill;
+      flex: 1 0 0;
+      z-index: -1;
+    }
+
+    .quote {
+      color: white;
+      margin-top:100px;
+    max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+     border-radius: 25px;
+      background-color:rgba(255, 255, 255, 0.2);
+      display:none;
+    }
+  
+  </style>
+  
+  <script type="text/javascript">
+
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+
+  
+    !function(t,e){"use strict";function n(){this.dispatchEvent(new CustomEvent("long-press",{bubbles:!0,cancelable:!0})),clearTimeout(o),console&&console.log&&console.log("long-press fired on "+this.outerHTML)}var o=null,u="ontouchstart"in t||navigator.MaxTouchPoints>0||navigator.msMaxTouchPoints>0,s=u?"touchstart":"mousedown",i=u?"touchcancel":"mouseout",a=u?"touchend":"mouseup",c=u?"touchmove":"mousemove";"initCustomEvent"in e.createEvent("CustomEvent")&&(t.CustomEvent=function(t,n){n=n||{bubbles:!1,cancelable:!1,detail:void 0};var o=e.createEvent("CustomEvent");return o.initCustomEvent(t,n.bubbles,n.cancelable,n.detail),o},t.CustomEvent.prototype=t.Event.prototype),e.addEventListener(s,function(t){var e=t.target,u=parseInt(e.getAttribute("data-long-press-delay")||"3000",10);o=setTimeout(n.bind(e),u)}),e.addEventListener(a,function(t){clearTimeout(o)}),e.addEventListener(i,function(t){clearTimeout(o)}),e.addEventListener(c,function(t){clearTimeout(o)})}(this,document);
+
+  </script>
+</head>
+<body>
+
+<div class="dock-item" data-long-press-delay="3000">
+  <video id="myVideo" autoplay controlsList="nodownload" oncontextmenu="return false;">
+    <source id="mp4_src" src="HandScanningVideo.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+</div>
+
+
+  <div id="wrapper">
+    <div class="quote"><h1>You've won a cuddly toy!</h1></div>
+    <div class="quote"><h1>You've won a free drink!</h1></div>
+    <div class="quote"><h1>You haven't won anything but you have the rest of your life to live. Enjoy it!</h1></div>
+    <div class="quote"><h1>You haven't won anything but you have the rest of your life to live. Enjoy it!</h1></div>
+    <div class="quote"><h1>You haven't won anything but you have the rest of your life to live. Enjoy it!</h1></div>
+  </div>
+
+
+
+<script type="text/javascript">
+  
+      var w = document.getElementById('wrapper');
+var quotes = w.children;
+
+    var hideDivs = function(divs) {
+  for (var div of divs) {
+    div.style.display = 'none';
+  }
+}
+  
+    // listen for long-press event
+    document.addEventListener('long-press', function(e) {
+     e.target.setAttribute('data-editing', 'true');
+       myVideo.play();
+
+      myVideo.addEventListener('ended', function() {
+
+        myVideo.style.display = "none";
+
+        var rnd = Math.floor(Math.random() * quotes.length); // get random index
+        hideDivs(quotes); // hide all quotes
+        quotes[rnd].style.display = 'block'; // show random quote
+
+        setTimeout(function() {
+          hideDivs(quotes);
+          myVideo.style.display = "block";
+        }, 5000); 
+
+      });
+    });
+
+</script>
+  
+</body>
+</html>
