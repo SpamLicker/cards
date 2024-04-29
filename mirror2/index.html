@@ -325,7 +325,7 @@ h1{
   margin-right: auto;
   padding: 20px;
      border-radius: 25px;
-     background-color:rgba(0, 0, 0, 0.5)
+     background-color:rgba(0, 0, 0, 0.5);
 }
 
         </style>
@@ -351,7 +351,7 @@ h1{
 
   <div id="questions">
 
-  <div class="question questionfade active" id="q1">
+  <div class="question questionfade" id="q1">
     <h1>Would you party on in the rain?</h1>
     <img class="cl1 goTo" id="q1-yes" data-goto="overnight" width="300" height="300" src="yes.png">
     <img class="cl1 goTo" id="q1-no" data-goto="solo" width="300" height="300" src="no.png">
@@ -594,11 +594,11 @@ h1{
 //     }
 // }
 
-// window.addEventListener("mousemove", listener, false);
+//window.addEventListener("mousedown", listener, false);
 
-            // document.body.onmousemove = (setTimeout(function() {
-            //     document.getElementById("q1").classList.add("active");
-            // }, 3000));
+            document.body.onmousemove = (setTimeout(function() {
+                document.getElementById("q1").classList.add("active");
+            }, 3000));
 
 
         $(".cl1")
